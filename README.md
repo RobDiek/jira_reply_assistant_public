@@ -34,4 +34,4 @@ An AI-powered browser extension that helps generate context-aware Jira ticket re
 MIT (or your preferred license)
 
 ## Disclaimer
-This is a generic, sanitized version suitable for public use. You are responsible for your own API keys, endpoints, and compliance with your organization’s policies.
+This is a generic, sanitized version suitable for public use. You are responsible for your own API keys, endpoints, and compliance with your organization's policies.
