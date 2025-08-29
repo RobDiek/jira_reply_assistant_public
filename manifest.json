@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Jira Reply Assistant (0.9.0)",
+  "version": "0.9.0",
+  "description": "AI-powered assistant for Jira ticket responses with intelligent categorization and personalized user communication.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.atlassian.net/*",
+    "*://*/browse/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.atlassian.net/*",
+        "*://*/browse/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

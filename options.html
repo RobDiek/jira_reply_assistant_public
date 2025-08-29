@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jira Reply Assistant - Options</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; max-width: 600px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 8px; margin-bottom: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #005a87; }
+    .status { margin-top: 10px; color: green; }
+    .help-text { font-size: 12px; color: #666; margin-top: 5px; }
+    .test-result { margin-top: 5px; padding: 5px; background: #f0f0f0; border-radius: 3px; }
+    h1 { color: #333; }
+    h2 { color: #007cba; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <h1>🤖 Jira Reply Assistant</h1>
+  <p>Configure your AI assistant for Jira ticket responses.</p>
+  
+  <h2>API Configuration</h2>
+  
+  <div class="form-group">
+    <label for="apiKey">OpenAI API Key</label>
+    <input type="password" id="apiKey" placeholder="sk-...">
+    <div class="help-text">Your OpenAI API key. Get one at https://platform.openai.com/api-keys</div>
+  </div>
+
+  <div class="form-group">
+    <label for="baseUrl">API Base URL</label>
+    <input type="text" id="baseUrl" value="https://api.openai.com">
+    <div class="help-text">OpenAI API base URL or compatible endpoint (e.g., Azure OpenAI, local LLMs)</div>
+  </div>
+
+  <div class="form-group">
+    <button id="test" type="button">Test API Connection</button>
+    <div id="testResult" class="test-result"></div>
+  </div>
+
+  <h2>Model Settings</h2>
+  
+  <div class="form-group">
+    <label for="model">Model</label>
+    <input type="text" id="model" value="gpt-4o-mini">
+    <div class="help-text">AI model to use (gpt-4o-mini, gpt-4o, gpt-3.5-turbo, etc.)</div>
+  </div>
+
+  <div class="form-group">
+    <label for="temperature">Temperature (0.0 - 2.0)</label>
+    <input type="number" id="temperature" min="0" max="2" step="0.1" value="0.2">
+    <div class="help-text">Response creativity. Lower = more consistent, Higher = more creative</div>
+  </div>
+
+  <div class="form-group">
+    <label for="timeoutMs">Timeout (ms)</label>
+    <input type="number" id="timeoutMs" min="5000" max="120000" step="1000" value="45000">
+    <div class="help-text">Request timeout in milliseconds</div>
+  </div>
+
+  <h2>Response Settings</h2>
+
+  <div class="form-group">
+    <label for="replyMode">Default Mode</label>
+    <select id="replyMode">
+      <option value="agent">Agent (Technical)</option>
+      <option value="user">User (Friendly)</option>
+    </select>
+    <div class="help-text">Default response mode - can be changed per request</div>
+  </div>
+
+  <div class="form-group">
+    <label for="systemPrompt">Custom System Prompt (Optional)</label>
+    <textarea id="systemPrompt" rows="5" placeholder="Leave empty to use default prompt..."></textarea>
+    <div class="help-text">Override default system prompt. Leave empty for built-in prompt.</div>
+  </div>
+
+  <div class="form-group">
+    <button id="save">Save Settings</button>
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
